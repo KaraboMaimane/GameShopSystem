@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "NZib1PDOk4pvj5oTYwD93Ct6CxwncfmhhMrdTrXGy1A=",
+  "Source": "GameShop.Catalog.API",
+  "BasePath": "_content/GameShop.Catalog.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

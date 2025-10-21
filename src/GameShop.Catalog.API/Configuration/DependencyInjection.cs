@@ -1,4 +1,8 @@
+using GameShop.Catalog.API.Components.Implementations;
+using GameShop.Catalog.API.Components.Interfaces;
 using GameShop.Catalog.API.Data;
+using GameShop.Catalog.API.Repositories.Implementations;
+using GameShop.Catalog.API.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameShop.Catalog.API.Configuration;
@@ -31,9 +35,14 @@ public static class DependencyInjection
                 }
             ));
 
+        // Register repositories
+        services.AddScoped<IGameRepository, GameRepository>();
+        services.AddScoped<IGenreRepository, GenreRepository>();
+
+        // Register business logic components
+        services.AddScoped<IGameManager, GameManager>();
+        services.AddScoped<IGenreManager, GenreManager>();
+
         return services;
     }
-
-    // We'll add more service registration methods here later
-    // Such as AddRepositories(), AddApplicationServices(), etc.
 }

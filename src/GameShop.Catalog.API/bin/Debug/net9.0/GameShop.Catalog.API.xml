@@ -1,0 +1,828 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameShop.Catalog.API</name>
+    </assembly>
+    <members>
+        <member name="T:GameShop.Catalog.API.Components.Implementations.GameManager">
+            <summary>
+            Implementation of game business logic
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.#ctor(GameShop.Catalog.API.Repositories.Interfaces.IGameRepository,GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository)">
+            <summary>
+            Initializes a new instance of the GameManager
+            </summary>
+            <param name="gameRepository">The game repository</param>
+            <param name="genreRepository">The genre repository</param>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.GetAllGamesAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.GetGameByIdAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.GetGamesByGenreAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.CreateGameAsync(GameShop.Catalog.API.DTOs.CreateGameDto)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.UpdateGameAsync(System.Int32,GameShop.Catalog.API.DTOs.UpdateGameDto)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GameManager.DeleteGameAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GameShop.Catalog.API.Components.Implementations.GenreManager">
+            <summary>
+            Implementation of genre business logic
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GenreManager.#ctor(GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository)">
+            <summary>
+            Initializes a new instance of the GenreManager
+            </summary>
+            <param name="genreRepository">The genre repository</param>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GenreManager.GetAllGenresAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GenreManager.GetGenreByIdAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GenreManager.CreateGenreAsync(GameShop.Catalog.API.DTOs.CreateGenreDto)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GenreManager.UpdateGenreAsync(System.Int32,GameShop.Catalog.API.DTOs.UpdateGenreDto)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Implementations.GenreManager.DeleteGenreAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GameShop.Catalog.API.Components.Interfaces.IGameManager">
+            <summary>
+            Business logic interface for game operations
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGameManager.GetAllGamesAsync">
+            <summary>
+            Gets all games
+            </summary>
+            <returns>Collection of game DTOs</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGameManager.GetGameByIdAsync(System.Int32)">
+            <summary>
+            Gets a game by its ID
+            </summary>
+            <param name="id">The game ID</param>
+            <returns>Game DTO if found, null otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGameManager.GetGamesByGenreAsync(System.Int32)">
+            <summary>
+            Gets all games in a specific genre
+            </summary>
+            <param name="genreId">The genre ID</param>
+            <returns>Collection of game DTOs in the specified genre</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGameManager.CreateGameAsync(GameShop.Catalog.API.DTOs.CreateGameDto)">
+            <summary>
+            Creates a new game
+            </summary>
+            <param name="createGameDto">The game creation data</param>
+            <returns>The created game DTO</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGameManager.UpdateGameAsync(System.Int32,GameShop.Catalog.API.DTOs.UpdateGameDto)">
+            <summary>
+            Updates an existing game
+            </summary>
+            <param name="id">The ID of the game to update</param>
+            <param name="updateGameDto">The game update data</param>
+            <returns>True if update was successful, false otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGameManager.DeleteGameAsync(System.Int32)">
+            <summary>
+            Deletes a game
+            </summary>
+            <param name="id">The ID of the game to delete</param>
+            <returns>True if deletion was successful, false otherwise</returns>
+        </member>
+        <member name="T:GameShop.Catalog.API.Components.Interfaces.IGenreManager">
+            <summary>
+            Business logic interface for genre operations
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGenreManager.GetAllGenresAsync">
+            <summary>
+            Gets all genres
+            </summary>
+            <returns>Collection of genre DTOs</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGenreManager.GetGenreByIdAsync(System.Int32)">
+            <summary>
+            Gets a genre by its ID
+            </summary>
+            <param name="id">The genre ID</param>
+            <returns>Genre DTO if found, null otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGenreManager.CreateGenreAsync(GameShop.Catalog.API.DTOs.CreateGenreDto)">
+            <summary>
+            Creates a new genre
+            </summary>
+            <param name="createGenreDto">The genre creation data</param>
+            <returns>The created genre DTO</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGenreManager.UpdateGenreAsync(System.Int32,GameShop.Catalog.API.DTOs.UpdateGenreDto)">
+            <summary>
+            Updates an existing genre
+            </summary>
+            <param name="id">The ID of the genre to update</param>
+            <param name="updateGenreDto">The genre update data</param>
+            <returns>True if update was successful, false otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Components.Interfaces.IGenreManager.DeleteGenreAsync(System.Int32)">
+            <summary>
+            Deletes a genre
+            </summary>
+            <param name="id">The ID of the genre to delete</param>
+            <returns>True if deletion was successful, false otherwise</returns>
+        </member>
+        <member name="T:GameShop.Catalog.API.Configuration.ApiVersioningSetup">
+            <summary>
+            Contains extension methods for configuring API versioning
+            
+            What is API Versioning?
+            ----------------------
+            API versioning allows us to make changes to our API without breaking existing clients.
+            When we make breaking changes, we can create a new version while maintaining the old one.
+            
+            Key Concepts:
+            1. Version Number: Identifies different API versions (e.g., v1, v2)
+            2. Version Strategy: How we specify the version (URL, header, or query string)
+            3. Version Reader: Component that reads version information from the request
+            
+            Example Usage:
+            - URL: /api/v1/games
+            - Header: api-version: 1.0
+            - Query: /api/games?api-version=1.0
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Configuration.ApiVersioningSetup.AddApiVersioningSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures API versioning for the application
+            </summary>
+            <param name="services">The service collection to configure</param>
+            <returns>The configured service collection</returns>
+        </member>
+        <member name="T:GameShop.Catalog.API.Configuration.DependencyInjection">
+            <summary>
+            Contains extension methods for configuring services in the application
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Configuration.DependencyInjection.AddDatabaseServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configures database and related services
+            </summary>
+            <param name="services">The service collection to add services to</param>
+            <param name="configuration">The configuration containing connection strings</param>
+            <returns>The service collection for chaining</returns>
+        </member>
+        <member name="T:GameShop.Catalog.API.Controllers.BaseApiController">
+            <summary>
+            Base API controller with versioning support
+            
+            Understanding API Controller Attributes:
+            -------------------------------------
+            [ApiController]: Enables API-specific behaviors:
+              - Automatic model validation
+              - Automatic HTTP 400 responses for invalid models
+              - Binding source parameter inference
+            
+            [Route]: Defines the URL pattern for the controller
+              - "api/v{version:apiVersion}/[controller]" breaks down to:
+                * api/ - Standard API prefix
+                * v{version:apiVersion} - Version number (e.g., v1)
+                * [controller] - Controller name without "Controller" suffix
+            
+            [ApiVersion("1.0")]: Specifies the API version this controller supports
+              - Multiple versions can be supported using multiple attributes
+              - Can mark versions as deprecated: [ApiVersion("1.0", Deprecated = true)]
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.BaseApiController.Error(System.String,System.String)">
+            <summary>
+            Creates an error response with consistent format
+            </summary>
+            <param name="message">The error message</param>
+            <param name="code">The error code</param>
+            <returns>Object result with error details</returns>
+        </member>
+        <member name="T:GameShop.Catalog.API.Controllers.GamesController">
+            <summary>
+            Controller for managing games
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.#ctor(GameShop.Catalog.API.Components.Interfaces.IGameManager,Microsoft.Extensions.Logging.ILogger{GameShop.Catalog.API.Controllers.GamesController})">
+            <summary>
+            Initializes a new instance of the GamesController
+            </summary>
+            <param name="gameManager">The game manager service</param>
+            <param name="logger">The logger service</param>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.GetAllGames">
+            <summary>
+            Gets all games
+            </summary>
+            <returns>A list of all games</returns>
+            <response code="200">Returns the list of games</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.GetGame(System.Int32)">
+            <summary>
+            Gets a specific game by id
+            </summary>
+            <param name="id">The ID of the game to retrieve</param>
+            <returns>The requested game</returns>
+            <response code="200">Returns the requested game</response>
+            <response code="404">If the game is not found</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.GetGamesByGenre(System.Int32)">
+            <summary>
+            Gets all games in a specific genre
+            </summary>
+            <param name="genreId">The ID of the genre to filter by</param>
+            <returns>A list of games in the specified genre</returns>
+            <response code="200">Returns the list of games in the genre</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.CreateGame(GameShop.Catalog.API.DTOs.CreateGameDto)">
+            <summary>
+            Creates a new game
+            </summary>
+            <param name="createGameDto">The game information</param>
+            <returns>The created game</returns>
+            <response code="201">Returns the newly created game</response>
+            <response code="400">If the game information is invalid</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.UpdateGame(System.Int32,GameShop.Catalog.API.DTOs.UpdateGameDto)">
+            <summary>
+            Updates a specific game
+            </summary>
+            <param name="id">The ID of the game to update</param>
+            <param name="updateGameDto">The updated game information</param>
+            <returns>No content</returns>
+            <response code="204">If the game was successfully updated</response>
+            <response code="404">If the game was not found</response>
+            <response code="400">If the game information is invalid</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GamesController.DeleteGame(System.Int32)">
+            <summary>
+            Deletes a specific game
+            </summary>
+            <param name="id">The ID of the game to delete</param>
+            <returns>No content</returns>
+            <response code="204">If the game was successfully deleted</response>
+            <response code="404">If the game was not found</response>
+        </member>
+        <member name="T:GameShop.Catalog.API.Controllers.GenresController">
+            <summary>
+            Controller for managing game genres
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GenresController.#ctor(GameShop.Catalog.API.Components.Interfaces.IGenreManager,Microsoft.Extensions.Logging.ILogger{GameShop.Catalog.API.Controllers.GenresController})">
+            <summary>
+            Initializes a new instance of the GenresController
+            </summary>
+            <param name="genreManager">The genre manager service</param>
+            <param name="logger">The logger service</param>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GenresController.GetAllGenres">
+            <summary>
+            Gets all genres
+            </summary>
+            <returns>A list of all genres</returns>
+            <response code="200">Returns the list of genres</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GenresController.GetGenre(System.Int32)">
+            <summary>
+            Gets a specific genre by id
+            </summary>
+            <param name="id">The ID of the genre to retrieve</param>
+            <returns>The requested genre</returns>
+            <response code="200">Returns the requested genre</response>
+            <response code="404">If the genre is not found</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GenresController.CreateGenre(GameShop.Catalog.API.DTOs.CreateGenreDto)">
+            <summary>
+            Creates a new genre
+            </summary>
+            <param name="createGenreDto">The genre information</param>
+            <returns>The created genre</returns>
+            <response code="201">Returns the newly created genre</response>
+            <response code="400">If the genre information is invalid</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GenresController.UpdateGenre(System.Int32,GameShop.Catalog.API.DTOs.UpdateGenreDto)">
+            <summary>
+            Updates a specific genre
+            </summary>
+            <param name="id">The ID of the genre to update</param>
+            <param name="updateGenreDto">The updated genre information</param>
+            <returns>No content</returns>
+            <response code="204">If the genre was successfully updated</response>
+            <response code="404">If the genre was not found</response>
+            <response code="400">If the genre information is invalid</response>
+        </member>
+        <member name="M:GameShop.Catalog.API.Controllers.GenresController.DeleteGenre(System.Int32)">
+            <summary>
+            Deletes a specific genre
+            </summary>
+            <param name="id">The ID of the genre to delete</param>
+            <returns>No content</returns>
+            <response code="204">If the genre was successfully deleted</response>
+            <response code="404">If the genre was not found</response>
+        </member>
+        <member name="T:GameShop.Catalog.API.Data.CatalogDbContext">
+            <summary>
+            Database context for the Game Shop Catalog
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Data.CatalogDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{GameShop.Catalog.API.Data.CatalogDbContext})">
+            <summary>
+            Initializes a new instance of the CatalogDbContext
+            </summary>
+            <param name="options">The options to be used by the DbContext</param>
+        </member>
+        <member name="P:GameShop.Catalog.API.Data.CatalogDbContext.Games">
+            <summary>
+            Gets or sets the games in the catalog
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Data.CatalogDbContext.Genres">
+            <summary>
+            Gets or sets the genres in the catalog
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Data.CatalogDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the model that was discovered by convention from the entity types
+            </summary>
+            <param name="modelBuilder">The builder being used to construct the model for this context</param>
+        </member>
+        <member name="T:GameShop.Catalog.API.Data.SeedData">
+            <summary>
+            Provides seed data for the catalog database
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Data.SeedData.InitializeAsync(GameShop.Catalog.API.Data.CatalogDbContext)">
+            <summary>
+            Seeds the database with initial data if it's empty
+            </summary>
+            <param name="context">The database context to seed</param>
+        </member>
+        <member name="T:GameShop.Catalog.API.DTOs.GameDto">
+            <summary>
+            Data Transfer Object for Game information
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.Id">
+            <summary>
+            Unique identifier for the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.Title">
+            <summary>
+            Title of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.Description">
+            <summary>
+            Description of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.Price">
+            <summary>
+            Price of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.Publisher">
+            <summary>
+            Publisher of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.ReleaseDate">
+            <summary>
+            Release date of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GameDto.Genre">
+            <summary>
+            Genre information for the game
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.DTOs.CreateGameDto">
+            <summary>
+            DTO for creating a new game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGameDto.Title">
+            <summary>
+            Title of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGameDto.Description">
+            <summary>
+            Description of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGameDto.Price">
+            <summary>
+            Price of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGameDto.Publisher">
+            <summary>
+            Publisher of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGameDto.ReleaseDate">
+            <summary>
+            Release date of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGameDto.GenreId">
+            <summary>
+            ID of the genre this game belongs to
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.DTOs.UpdateGameDto">
+            <summary>
+            DTO for updating an existing game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGameDto.Title">
+            <summary>
+            Title of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGameDto.Description">
+            <summary>
+            Description of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGameDto.Price">
+            <summary>
+            Price of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGameDto.Publisher">
+            <summary>
+            Publisher of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGameDto.ReleaseDate">
+            <summary>
+            Release date of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGameDto.GenreId">
+            <summary>
+            ID of the genre this game belongs to
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.DTOs.GenreDto">
+            <summary>
+            Data Transfer Object for Genre information
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GenreDto.Id">
+            <summary>
+            Unique identifier for the genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GenreDto.Name">
+            <summary>
+            Name of the genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.GenreDto.Description">
+            <summary>
+            Description of the genre
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.DTOs.CreateGenreDto">
+            <summary>
+            DTO for creating a new genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGenreDto.Name">
+            <summary>
+            Name of the genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.CreateGenreDto.Description">
+            <summary>
+            Description of the genre
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.DTOs.UpdateGenreDto">
+            <summary>
+            DTO for updating an existing genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGenreDto.Name">
+            <summary>
+            Name of the genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.DTOs.UpdateGenreDto.Description">
+            <summary>
+            Description of the genre
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.HealthChecks.DatabaseHealthCheck">
+            <summary>
+            Health check for the database
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.HealthChecks.DatabaseHealthCheck.#ctor(GameShop.Catalog.API.Data.CatalogDbContext,Microsoft.Extensions.Logging.ILogger{GameShop.Catalog.API.HealthChecks.DatabaseHealthCheck})">
+            <summary>
+            Initializes a new instance of the DatabaseHealthCheck
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.HealthChecks.DatabaseHealthCheck.CheckHealthAsync(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext,System.Threading.CancellationToken)">
+            <summary>
+            Checks database health by attempting to connect
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.Middleware.ApiError">
+            <summary>
+            Represents an API error response
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Middleware.ApiError.Message">
+            <summary>
+            Gets or sets the error message
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Middleware.ApiError.Details">
+            <summary>
+            Gets or sets the detailed error information (only included in development)
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Middleware.ApiError.Code">
+            <summary>
+            Gets or sets the error code
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.Middleware.ErrorHandlingMiddleware">
+            <summary>
+            Middleware to handle exceptions globally across the application
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Middleware.ErrorHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{GameShop.Catalog.API.Middleware.ErrorHandlingMiddleware},Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Initializes a new instance of the ErrorHandlingMiddleware
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Middleware.ErrorHandlingMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes the middleware
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.Middleware.RequestResponseLoggingMiddleware">
+            <summary>
+            Middleware to log HTTP requests and responses
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Middleware.RequestResponseLoggingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{GameShop.Catalog.API.Middleware.RequestResponseLoggingMiddleware})">
+            <summary>
+            Initializes a new instance of the RequestResponseLoggingMiddleware
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Middleware.RequestResponseLoggingMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes the middleware
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:GameShop.Catalog.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GameShop.Catalog.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GameShop.Catalog.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:GameShop.Catalog.API.Models.Game">
+            <summary>
+            Represents a game in the catalog
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.Id">
+            <summary>
+            Unique identifier for the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.Title">
+            <summary>
+            Title of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.Description">
+            <summary>
+            Description of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.Price">
+            <summary>
+            Price of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.Publisher">
+            <summary>
+            Publisher of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.ReleaseDate">
+            <summary>
+            Release date of the game
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.GenreId">
+            <summary>
+            Foreign key for Genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Game.Genre">
+            <summary>
+            Navigation property for the game's genre
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.Models.Genre">
+            <summary>
+            Represents a game genre in the catalog
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Genre.Id">
+            <summary>
+            Unique identifier for the genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Genre.Name">
+            <summary>
+            Name of the genre (e.g., "Action", "RPG", "Strategy")
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Genre.Description">
+            <summary>
+            Optional description of the genre
+            </summary>
+        </member>
+        <member name="P:GameShop.Catalog.API.Models.Genre.Games">
+            <summary>
+            Navigation property for games in this genre
+            </summary>
+        </member>
+        <member name="T:GameShop.Catalog.API.Repositories.Implementations.GameRepository">
+            <summary>
+            Implementation of the game repository using Entity Framework Core
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.#ctor(GameShop.Catalog.API.Data.CatalogDbContext)">
+            <summary>
+            Initializes a new instance of the GameRepository
+            </summary>
+            <param name="context">The database context</param>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.GetAllAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.GetByIdAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.GetByGenreAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.CreateAsync(GameShop.Catalog.API.Models.Game)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.UpdateAsync(GameShop.Catalog.API.Models.Game)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GameRepository.DeleteAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GameShop.Catalog.API.Repositories.Implementations.GenreRepository">
+            <summary>
+            Implementation of the genre repository using Entity Framework Core
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GenreRepository.#ctor(GameShop.Catalog.API.Data.CatalogDbContext)">
+            <summary>
+            Initializes a new instance of the GenreRepository
+            </summary>
+            <param name="context">The database context</param>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GenreRepository.GetAllAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GenreRepository.GetByIdAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GenreRepository.CreateAsync(GameShop.Catalog.API.Models.Genre)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GenreRepository.UpdateAsync(GameShop.Catalog.API.Models.Genre)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Implementations.GenreRepository.DeleteAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository">
+            <summary>
+            Repository interface for Game entity operations
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository.GetAllAsync">
+            <summary>
+            Gets all games asynchronously
+            </summary>
+            <returns>A collection of all games</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository.GetByIdAsync(System.Int32)">
+            <summary>
+            Gets a game by its ID asynchronously
+            </summary>
+            <param name="id">The ID of the game to retrieve</param>
+            <returns>The game if found, null otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository.GetByGenreAsync(System.Int32)">
+            <summary>
+            Gets games by genre ID asynchronously
+            </summary>
+            <param name="genreId">The ID of the genre to filter by</param>
+            <returns>A collection of games in the specified genre</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository.CreateAsync(GameShop.Catalog.API.Models.Game)">
+            <summary>
+            Creates a new game asynchronously
+            </summary>
+            <param name="game">The game entity to create</param>
+            <returns>The created game with its assigned ID</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository.UpdateAsync(GameShop.Catalog.API.Models.Game)">
+            <summary>
+            Updates an existing game asynchronously
+            </summary>
+            <param name="game">The game entity with updated values</param>
+            <returns>True if the update was successful, false otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGameRepository.DeleteAsync(System.Int32)">
+            <summary>
+            Deletes a game by its ID asynchronously
+            </summary>
+            <param name="id">The ID of the game to delete</param>
+            <returns>True if the deletion was successful, false otherwise</returns>
+        </member>
+        <member name="T:GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository">
+            <summary>
+            Repository interface for Genre entity operations
+            </summary>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository.GetAllAsync">
+            <summary>
+            Gets all genres asynchronously
+            </summary>
+            <returns>A collection of all genres</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository.GetByIdAsync(System.Int32)">
+            <summary>
+            Gets a genre by its ID asynchronously
+            </summary>
+            <param name="id">The ID of the genre to retrieve</param>
+            <returns>The genre if found, null otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository.CreateAsync(GameShop.Catalog.API.Models.Genre)">
+            <summary>
+            Creates a new genre asynchronously
+            </summary>
+            <param name="genre">The genre entity to create</param>
+            <returns>The created genre with its assigned ID</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository.UpdateAsync(GameShop.Catalog.API.Models.Genre)">
+            <summary>
+            Updates an existing genre asynchronously
+            </summary>
+            <param name="genre">The genre entity with updated values</param>
+            <returns>True if the update was successful, false otherwise</returns>
+        </member>
+        <member name="M:GameShop.Catalog.API.Repositories.Interfaces.IGenreRepository.DeleteAsync(System.Int32)">
+            <summary>
+            Deletes a genre by its ID asynchronously
+            </summary>
+            <param name="id">The ID of the genre to delete</param>
+            <returns>True if the deletion was successful, false otherwise</returns>
+        </member>
+    </members>
+</doc>
